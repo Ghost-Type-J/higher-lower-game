@@ -24,14 +24,13 @@ def evaluate_score(a, b):
 
 def higher_or_lower():
 
+  print(logo)
   score = 0
   play_again = True
   prev_acc = {}
 
   while play_again:
 
-    clear()
-    print(f"{logo}\n")
     if prev_acc == {}:
       acc_a = random_selector(prev_acc)
     else:
@@ -48,16 +47,19 @@ def higher_or_lower():
       f"\n    Against B: {acc_b['name']}, a {acc_b['description']} from {acc_b['country']}. "
     )
 
-    choice = input(
-      "\nWhich account do you think has more followers? Type 'A' or 'B': "
-    ).lower()
-
     winner = evaluate_score(acc_a, acc_b)
+
+    choice = input(
+      "\n    Which account do you think has more followers? Type 'A' or 'B': "
+    ).lower()
 
     if choice == 'a':
       selection = acc_a
     elif choice == 'b':
       selection = acc_b
+
+    clear()
+    print(logo)
 
     if selection == winner:
       score += 1
